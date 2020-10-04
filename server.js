@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+path = require("path");
 const app = express();
 const db = require("./app/models");
 db.sequelize.sync({ force: false }).then(() => {
@@ -18,7 +18,8 @@ app.use(bodyParser.json());
 global.__basedir = __dirname;
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(express.static(path.join(__dirname, "/uploads")));
+// simple route
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to new-sku application." });
