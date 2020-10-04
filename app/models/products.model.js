@@ -9,6 +9,9 @@ module.exports = (sequelize, Sequelize) => {
     sub_category: {
       type: Sequelize.STRING,
     },
+    path: {
+      type: Sequelize.STRING,
+    },
     data: {
       type: Sequelize.BLOB("long"),
     },

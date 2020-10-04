@@ -15,10 +15,11 @@ const uploadFiles = async (req, res) => {
       title: req.body.title,
       category: req.body.category,
       sub_category: req.body.sub_category,
+      path: __basedir + "/uploads/" + req.file.filename,
       data: fs.readFileSync(__basedir + "/uploads/" + req.file.filename),
     }).then((image) => {
       fs.writeFileSync(__basedir + "/uploads/tmp/" + image.title, image.data);
-
+      console.log(__basedir + "/uploads/" + req.file.filename);
       return res.send(`File has been uploaded.`);
     });
   } catch (error) {

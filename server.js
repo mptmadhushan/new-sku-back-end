@@ -8,7 +8,7 @@ db.sequelize.sync({ force: false }).then(() => {
   console.log("Drop and re-sync db.");
 });
 var corsOptions = {
-  origin: "http://localhost:3200",
+  origin: "http://localhost:8080",
 };
 
 app.use(cors(corsOptions));
@@ -23,7 +23,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to new-sku application." });
 });
-require("./app/routes/products.route")(app);
+require("./app/routes/products.routes")(app);
+require("./app/routes/auth.routes")(app);
+require("./app/routes/user.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 3200;
 app.listen(PORT, () => {
