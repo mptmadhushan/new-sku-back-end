@@ -8,7 +8,7 @@ db.sequelize.sync({ force: false }).then(() => {
   console.log("Drop and re-sync db.");
 });
 var corsOptions = {
-  origin: "http://localhost:8082",
+  origin: "https://new-sku-front.herokuapp.com/",
 };
 
 app.use(cors(corsOptions));
