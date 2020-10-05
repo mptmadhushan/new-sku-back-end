@@ -15,15 +15,10 @@ const uploadFiles = async (req, res) => {
       title: req.body.title,
       category: req.body.category,
       sub_category: req.body.sub_category,
-      path:req.file.filename,
-      data: fs.readFileSync(
-        __basedir + "/uploads/" + req.file.filename
-      ),
+      path: req.file.filename,
+      data: fs.readFileSync(__basedir + "/uploads/" + req.file.filename),
     }).then((image) => {
-      fs.writeFileSync(
-        __basedir + "/uploads/tmp/" + image.title,
-        image.data
-      );
+      fs.writeFileSync(__basedir + "/uploads/tmp/" + image.title, image.data);
       console.log(__basedir + "/uploads/" + req.file.filename);
       return res.send(`File has been uploaded.`);
     });
@@ -35,7 +30,7 @@ const uploadFiles = async (req, res) => {
 const findAllCategory = (req, res) => {
   const category = req.body.category;
 
-  Image.findAll({ attributes: ["category"], group: ["category"] })
+  Image.findAll({ attributes: ["category", "path"], group: ["category"] })
     .then((data) => {
       res.send(data);
     })
