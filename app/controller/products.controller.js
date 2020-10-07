@@ -65,13 +65,29 @@ const findAllProductsBySub = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials.",
+          err.message || "Some error occurred while retrieving product.",
       });
     });
 };
+
+const findOne = (req, res) => {
+  const id = req.params.id;
+
+  Image.findByPk(id)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving product with id=" + id,
+      });
+    });
+};
+
 module.exports = {
   uploadFiles,
   findAllCategory,
   findAllSubCategory,
+  findOne,
   findAllProductsBySub,
 };

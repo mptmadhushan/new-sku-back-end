@@ -20,10 +20,19 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.products = require("./products.model")(sequelize, Sequelize);
+db.library = require("./library.model")(sequelize, Sequelize);
 
 db.user = require("./users.model")(sequelize, Sequelize);
 db.role = require("./role.model")(sequelize, Sequelize);
 
+db.libraryNames = require("./library.name.model")(sequelize, Sequelize);
+db.LibraryItems = require("./library.items")(sequelize, Sequelize);
+
+db.libraryNames.hasMany(db.LibraryItems, { as: "library_names" });
+db.LibraryItems.belongsTo(db.libraryNames, {
+  foreignKey: "libraryNameId",
+  as: "library_name",
+});
 db.role.belongsToMany(db.user, {
   through: "user_roles",
   foreignKey: "roleId",
@@ -34,5 +43,7 @@ db.user.belongsToMany(db.role, {
   foreignKey: "userId",
   otherKey: "roleId",
 });
+
 db.ROLES = ["user", "admin", "moderator"];
+
 module.exports = db;
