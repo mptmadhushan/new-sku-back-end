@@ -7,6 +7,8 @@ const db = require("./app/models");
 db.sequelize.sync({ force: false }).then(() => {
   console.log("Drop and re-sync db.");
 });
+
+
 var corsOptions = {
   origin: "https://new-sku-front.herokuapp.com/",
 };

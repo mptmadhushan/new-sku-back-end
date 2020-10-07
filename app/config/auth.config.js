@@ -1,3 +1,3 @@
 module.exports = {
-    secret: "skywalker-secret-key"
-  };
+  secret: "SkyWalker-secret-key"
+};

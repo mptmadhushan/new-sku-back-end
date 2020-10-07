@@ -22,7 +22,7 @@ db.sequelize = sequelize;
 db.products = require("./products.model")(sequelize, Sequelize);
 db.library = require("./library.model")(sequelize, Sequelize);
 
-db.user = require("./users.model")(sequelize, Sequelize);
+db.user = require("./user.model")(sequelize, Sequelize);
 db.role = require("./role.model")(sequelize, Sequelize);
 
 db.libraryNames = require("./library.name.model")(sequelize, Sequelize);

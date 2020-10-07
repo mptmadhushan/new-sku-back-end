@@ -10,15 +10,6 @@ let routes = (app) => {
   router.post("/addLibraryItem", library.createComment);
   router.get("/findAllItemsByLibrary/:libraryNameId", library.findTutorialById);
   router.get("/findAllLibrary", library.findAll);
-  // router.get(
-  //   "/findAllSubCategory/:category",
-  //   uploadController.findAllSubCategory
-  // );
-  // router.get(
-  //   "/findAllProductsBySub/:sub_category",
-  //   uploadController.findAllProductsBySub
-  // );
-  // router.get("/findProductById/:id", uploadController.findOne);
 
   return app.use("/library", router);
 };
